@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import styles from "../styles/Gallery.module.css";
+import styles from "../styles/GalleryPhotos.module.css";
 
 const galleryImages = [
   "/images/photos/4.jpg",
