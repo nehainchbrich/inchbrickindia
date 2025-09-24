@@ -39,7 +39,7 @@ export default function Faq() {
         <div className={styles.faqBanner}>
              <h1 className={styles.title}>Frequently Asked Questions</h1>
         <p className={styles.subtitle}>
-          Have questions about our properties, services, or investments? We've got you covered.
+          {`Have questions about our properties, services, or investments? We've got you covered.`}
         </p>
         </div>
       <div className="container">

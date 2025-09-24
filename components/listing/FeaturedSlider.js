@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import styles from "../../styles/listing/FeaturedSlider.module.css";
 
@@ -17,32 +17,30 @@ export default function FeaturedSlider() {
 
   const slidesToShow = 3;
 
-  // ✅ Function to update slider position
-  const updateSlider = () => {
+  // ✅ useCallback ensures stable reference for useEffect
+  const updateSlider = useCallback(() => {
     if (trackRef.current) {
       const firstSlide = trackRef.current.querySelector(`.${styles.slide}`);
       if (firstSlide) {
-        const width = firstSlide.offsetWidth + 20; // margin included
+        const width = firstSlide.offsetWidth + 20; // include margin
         setSlideWidth(width);
         trackRef.current.style.transform = `translateX(-${index * width}px)`;
       }
     }
-  };
-
-  // ✅ Re-run updateSlider whenever index changes
-  useEffect(() => {
-    updateSlider();
   }, [index]);
 
-  // ✅ Handle window resize
+  // Re-run on index change
+  useEffect(() => {
+    updateSlider();
+  }, [index, updateSlider]);
+
+  // Handle window resize
   useEffect(() => {
     window.addEventListener("resize", updateSlider);
-    updateSlider(); // run once on mount
+    updateSlider(); // initial run
 
-    return () => {
-      window.removeEventListener("resize", updateSlider);
-    };
-  }, []);
+    return () => window.removeEventListener("resize", updateSlider);
+  }, [updateSlider]);
 
   return (
     <section className={styles.featuredSection}>

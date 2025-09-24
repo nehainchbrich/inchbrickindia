@@ -90,7 +90,7 @@ export default function LoginForm({ onSwitch }) {
       </Formik>
 
       <p className={styles.switchText}>
-        Don't have an account?{" "}
+        {`Don't`} have an account?{" "}
         <span className={styles.toggleLink} onClick={() => onSwitch("register")}>
           Register
         </span>
