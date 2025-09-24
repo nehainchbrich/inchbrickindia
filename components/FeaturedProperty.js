@@ -1,98 +1,74 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/FeaturedProperties.module.css";
 
 const properties = [
-  {
-    id: 1,
-    title: "Luxury Villa",
-    desc: "Spacious 4BHK villa with modern amenities and beautiful garden view.",
-    price: "₹2.5 Cr",
-    location: "South Delhi, New Delhi",
-    img: "/images/house.jpg",
-  },
-  {
-    id: 2,
-    title: "Modern Apartment",
-    desc: "Spacious 3BHK apartment with great amenities and city view.",
-    price: "₹1.8 Cr",
-    location: "Bandra West, Mumbai",
-    img: "/images/house2.jpg",
-  },
-  {
-    id: 3,
-    title: "Premium Villa",
-    desc: "Luxury 4BHK villa with garden and pool.",
-    price: "₹3 Cr",
-    location: "Whitefield, Bangalore",
-    img: "/images/house3.jpg",
-  },
-  {
-    id: 4,
-    title: "Smart Home",
-    desc: "Modern smart 3BHK home with automated systems.",
-    price: "₹2.2 Cr",
-    location: "Hinjewadi, Pune",
-    img: "/images/house.jpg",
-  },
-  {
-    id: 5,
-    title: "Garden Villa",
-    desc: "Spacious villa surrounded by greenery.",
-    price: "₹2.7 Cr",
-    location: "Banjara Hills, Hyderabad",
-    img: "/images/house2.jpg",
-  },
+  { id: 1, title: "Luxury Villa", desc: "Spacious 4BHK villa with modern amenities and beautiful garden view.", price: "₹2.5 Cr", location: "South Delhi, New Delhi", img: "/images/house.jpg" },
+  { id: 2, title: "Modern Apartment", desc: "Spacious 3BHK apartment with great amenities and city view.", price: "₹1.8 Cr", location: "Bandra West, Mumbai", img: "/images/house2.jpg" },
+  { id: 3, title: "Premium Villa", desc: "Luxury 4BHK villa with garden and pool.", price: "₹3 Cr", location: "Whitefield, Bangalore", img: "/images/house3.jpg" },
+  { id: 4, title: "Smart Home", desc: "Modern smart 3BHK home with automated systems.", price: "₹2.2 Cr", location: "Hinjewadi, Pune", img: "/images/house.jpg" },
+  { id: 5, title: "Garden Villa", desc: "Spacious villa surrounded by greenery.", price: "₹2.7 Cr", location: "Banjara Hills, Hyderabad", img: "/images/house2.jpg" },
 ];
 
 export default function FeaturedProperties() {
   const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(3);
   const intervalRef = useRef(null);
   const trackRef = useRef(null);
-  const visible = 3;
+
+  // Update slides to show based on window width
+  const updateVisible = () => {
+    if (window.innerWidth <= 768) {
+      setVisible(1);
+    } else {
+      setVisible(3);
+    }
+  };
+
+  useEffect(() => {
+    updateVisible();
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
 
   // Clone slides for infinite loop
   const slides = [...properties.slice(-visible), ...properties, ...properties.slice(0, visible)];
   const totalSlides = slides.length;
   const slideWidth = 100 / visible;
 
-  // Autoplay
-  const stopAutoScroll = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  }, []);
-
-  const startAutoScroll = useCallback(() => {
+  const startAutoScroll = () => {
     stopAutoScroll();
     intervalRef.current = setInterval(() => {
       nextSlide();
     }, 4000);
-  }, [stopAutoScroll]);
+  };
+
+  const stopAutoScroll = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
 
   useEffect(() => {
     startAutoScroll();
     return () => stopAutoScroll();
-  }, [startAutoScroll, stopAutoScroll]);
+  }, [visible]);
 
-  // Slide navigation
-  const nextSlide = useCallback(() => setCurrent((prev) => prev + 1), []);
-  const prevSlide = useCallback(() => setCurrent((prev) => prev - 1), []);
+  const nextSlide = () => setCurrent(prev => prev + 1);
+  const prevSlide = () => setCurrent(prev => prev - 1);
 
-  // Handle infinite loop snapping
+  // Infinite loop adjustment
   const handleTransitionEnd = () => {
-    if (!trackRef.current) return;
-
     if (current >= properties.length) {
-      trackRef.current.style.transition = "none";
       setCurrent(0);
+      trackRef.current.style.transition = "none";
       trackRef.current.style.transform = `translateX(-${0}%)`;
       requestAnimationFrame(() => {
         trackRef.current.style.transition = "transform 0.5s ease-in-out";
       });
     } else if (current < 0) {
-      trackRef.current.style.transition = "none";
       setCurrent(properties.length - 1);
-      trackRef.current.style.transform = `translateX(-${(properties.length) * slideWidth}%)`;
+      trackRef.current.style.transition = "none";
+      trackRef.current.style.transform = `translateX(-${properties.length * (100 / visible)}%)`;
       requestAnimationFrame(() => {
         trackRef.current.style.transition = "transform 0.5s ease-in-out";
       });
@@ -111,15 +87,11 @@ export default function FeaturedProperties() {
           <div
             className={styles.featuredPropertyTrack}
             ref={trackRef}
-            style={{
-              transform: `translateX(-${(current + visible) * slideWidth}%)`,
-              transition: "transform 0.5s ease-in-out",
-              display: "flex",
-            }}
+            style={{ transform: `translateX(-${(current + visible) * slideWidth}%)`, transition: "transform 0.5s ease-in-out" }}
             onTransitionEnd={handleTransitionEnd}
           >
             {slides.map((prop, index) => (
-              <div key={index} className={styles.featuredPropertyItem} style={{ flex: `0 0 ${slideWidth}%` }}>
+              <div key={index} className={styles.featuredPropertyItem}>
                 <div className={styles.featuredPropertyCard}>
                   <div className={styles.featuredPropertyMain}>
                     <div className={styles.featuredPropertyImg}>
@@ -143,7 +115,6 @@ export default function FeaturedProperties() {
             ))}
           </div>
 
-          {/* Prev/Next */}
           <button className={`${styles.featuredSliderBtn} ${styles.prev}`} onClick={prevSlide}>
             &#10094;
           </button>

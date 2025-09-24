@@ -23,13 +23,14 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  width: 100%;
+  /* width: 100%; */
   gap: 40px;
 }
 
 .heroContent {
   flex: 1 1 0;
   padding: 2rem 0;
+  padding-top: 0 !important;
 }
 
 .heroContent h1 {
@@ -69,13 +70,14 @@
   background: #ff8400;
   color: #fff;
   height: fit-content;
-  margin-left: 1rem;
   padding: 12px 32px;
   border: none;
   font-size: 1.1rem;
+  margin-top: 1rem;
   text-decoration: none;
   transition: background 0.2s;
   box-shadow: 3px 4px 3px rgb(255 132 0 / 51%);
+  display: inline-block;
 }
 
 .heroImage img {
@@ -186,7 +188,10 @@
     font-size: 1.5rem;
   }
   .btn{
-margin-left: 0;
+    margin-left: 0;
+    display: block;
+    width: fit-content;
+    margin-top: .5rem;
   }
   .heroContent{
     padding: 0;
