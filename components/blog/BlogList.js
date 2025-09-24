@@ -49,8 +49,8 @@ const BlogList = () => {
   return (
      <div>
             {blogPosts.map((post) => (
-                 <Link href="blog/detail/" className={styles.blogImageLink}>
-              <article key={post.id} className={styles.blogCard}>
+                 <Link href="blog/detail/" className={styles.blogImageLink} key={post.id}>
+              <article key={post.id} className={styles.blogCard}> 
                   <Image
                     src={post.image}
                     alt={post.title}

@@ -53,7 +53,7 @@ export default function Forgot({ onSwitch }) {
     <div className={styles.formContainer}>
       <h2>Forgot Password</h2>
       <p className={styles.description}>
-        Enter your email address and we'll send you a link to reset your password.
+        {`Enter your email address and we'll send you a link to reset your password.`}
       </p>
 
       <Formik

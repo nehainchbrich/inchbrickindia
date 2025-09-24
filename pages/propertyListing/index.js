@@ -140,7 +140,7 @@ export default function PropertyListing() {
         {/* Left: Property Listings */}
         <div className={styles.listingList}>
       {properties.map((property) => (
-      <Link href="propertyListing/detail/">
+      <Link href="propertyListing/detail/" key={property.id}>
         <div key={property.id} className={styles.listingItem}>
           <Image
             src={property.img}

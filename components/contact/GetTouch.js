@@ -4,7 +4,7 @@ import styles from "../../styles/contact/Style.module.css";
 export default function GetTouch() {
   return (
     <div className={styles.contactCard}>
-      <h2>Let's Get in touch</h2>
+      <h2>{`Let's Get in touch`}</h2>
       <p>
         We would love to hear from you. Reach us via the details below or send us a message.
       </p>
@@ -22,7 +22,7 @@ export default function GetTouch() {
           <h4>Contact</h4>
           <p>
             <FaMobileAlt className={styles.icon} /> &nbsp; +91 99999 99999,{" "}
-            <FaEnvelope className={styles.icon} /> hello@inchbrick.com
+            <FaEnvelope className={styles.icon} /> {`hello@inchbrick.com`}
           </p>
         </div>
 

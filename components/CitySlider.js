@@ -1,5 +1,12 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useRef, useState, useMemo } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 import Image from "next/image";
 import styles from "../styles/CitySlider.module.css";
 
@@ -42,19 +49,18 @@ export default function CitySlider() {
   );
 
   const [pageWidth, setPageWidth] = useState(0);
-  const [current, setCurrent] = useState(1); // index into extendedPages
+  const [current, setCurrent] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
 
-  // keep ref synced with state to avoid stale closures
+  // keep ref synced with state
   useEffect(() => {
     currentRef.current = current;
   }, [current]);
 
   // Measure visible width
-  const measure = () => {
+  const measure = useCallback(() => {
     const w = wrapperRef.current?.clientWidth || 0;
     setPageWidth(w);
-    // keep track transform in sync immediately when measuring
     const track = trackRef.current;
     if (track) {
       track.style.transition = transitionEnabled
@@ -62,17 +68,16 @@ export default function CitySlider() {
         : "none";
       track.style.transform = `translateX(-${currentRef.current * w}px)`;
     }
-  };
+  }, [transitionEnabled]);
 
   useLayoutEffect(() => {
     measure();
     const onResize = () => measure();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-    // intentionally empty deps: we want to measure on mount and on resize only
-  }, []);
+  }, [measure]);
 
-  // Apply transform when current/pageWidth/transitionEnabled change
+  // Apply transform on current/pageWidth
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -83,13 +88,14 @@ export default function CitySlider() {
   }, [current, pageWidth, transitionEnabled]);
 
   // Autoplay helpers
-  const stopAutoplay = () => {
+  const stopAutoplay = useCallback(() => {
     if (autoplayRef.current) {
       clearInterval(autoplayRef.current);
       autoplayRef.current = null;
     }
-  };
-  const startAutoplay = () => {
+  }, []);
+
+  const startAutoplay = useCallback(() => {
     stopAutoplay();
     autoplayRef.current = setInterval(() => {
       setCurrent((prev) => {
@@ -98,27 +104,23 @@ export default function CitySlider() {
         return next;
       });
     }, AUTOPLAY_DELAY);
-  };
+  }, [stopAutoplay]);
 
   // Start autoplay on mount
   useEffect(() => {
     startAutoplay();
     return () => stopAutoplay();
-    // note: not depending on pageWidth to avoid restarting too frequently
-  }, []);
+  }, [startAutoplay, stopAutoplay]);
 
-  // Visibility/focus handling — pause timers and self-correct if left on a clone
+  // Visibility/focus handling
   useEffect(() => {
     const onVisible = () => {
       measure();
-
       const cur = currentRef.current;
       if (cur === 0) {
-        // snap to last real page without animation
         setTransitionEnabled(false);
         setCurrent(totalPages);
         currentRef.current = totalPages;
-        // re-enable after a tick so further transitions animate
         setTimeout(() => setTransitionEnabled(true), 20);
       } else if (cur === totalPages + 1) {
         setTransitionEnabled(false);
@@ -126,8 +128,6 @@ export default function CitySlider() {
         currentRef.current = 1;
         setTimeout(() => setTransitionEnabled(true), 20);
       }
-
-      // restart autoplay
       startAutoplay();
     };
 
@@ -149,20 +149,17 @@ export default function CitySlider() {
       window.removeEventListener("focus", onVisible);
       window.removeEventListener("blur", onHidden);
     };
-  }, [totalPages]);
+  }, [measure, startAutoplay, stopAutoplay, totalPages]);
 
-  // Transition-end handler to handle infinite loop snapping
+  // Transition-end handler
   const handleTransitionEnd = () => {
     const cur = currentRef.current;
     if (cur === totalPages + 1) {
-      // moved past last real -> snap to first real (index 1)
       setTransitionEnabled(false);
       setCurrent(1);
       currentRef.current = 1;
-      // re-enable transition next tick
       setTimeout(() => setTransitionEnabled(true), 20);
     } else if (cur === 0) {
-      // moved before first real -> snap to last real
       setTransitionEnabled(false);
       setCurrent(totalPages);
       currentRef.current = totalPages;
@@ -188,10 +185,6 @@ export default function CitySlider() {
     });
   };
 
-  // Pause/resume on hover
-  const pauseAutoplay = () => stopAutoplay();
-  const resumeAutoplay = () => startAutoplay();
-
   return (
     <div className={styles.testimonials} id="testimonials">
       <div className="container">
@@ -200,8 +193,8 @@ export default function CitySlider() {
         <div
           className={styles.sliderWrapper}
           ref={wrapperRef}
-          onMouseEnter={pauseAutoplay}
-          onMouseLeave={resumeAutoplay}
+          onMouseEnter={stopAutoplay}
+          onMouseLeave={startAutoplay}
         >
           <div
             className={styles.sliderTrack}
@@ -213,7 +206,10 @@ export default function CitySlider() {
               <div
                 className={styles.citySliderPage}
                 key={pageIdx}
-                style={{ width: pageWidth ? `${pageWidth}px` : "100%", flex: "0 0 auto" }}
+                style={{
+                  width: pageWidth ? `${pageWidth}px` : "100%",
+                  flex: "0 0 auto",
+                }}
               >
                 <div className={styles.cityGrid}>
                   {pageCities.map((city, idx) => (
@@ -224,7 +220,6 @@ export default function CitySlider() {
                         alt={city.name}
                         width={600}
                         height={360}
-                        // priority={false}
                       />
                       <div className={styles.cityInfo}>
                         <div className={styles.cityName}>{city.name}</div>
@@ -238,10 +233,18 @@ export default function CitySlider() {
           </div>
 
           {/* Prev/Next */}
-          <button className={`${styles.sliderBtn} ${styles.prev}`} onClick={prevSlide} aria-label="Previous">
+          <button
+            className={`${styles.sliderBtn} ${styles.prev}`}
+            onClick={prevSlide}
+            aria-label="Previous"
+          >
             &#10094;
           </button>
-          <button className={`${styles.sliderBtn} ${styles.next}`} onClick={nextSlide} aria-label="Next">
+          <button
+            className={`${styles.sliderBtn} ${styles.next}`}
+            onClick={nextSlide}
+            aria-label="Next"
+          >
             &#10095;
           </button>
         </div>
@@ -249,4 +252,3 @@ export default function CitySlider() {
     </div>
   );
 }
-
