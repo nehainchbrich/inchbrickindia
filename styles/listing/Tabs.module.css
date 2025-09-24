@@ -1,0 +1,39 @@
+.propertyTabs {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.propertyTabs ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.propertyTabs button {
+  border: none;
+  font-weight: 600;
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: none;
+  transition: all 0.3s ease;
+}
+
+.propertyTabs button:hover,
+.propertyTabs button.active {
+  background: #e63f3f;
+  color: #fff;
+}
+
+.tabSection {
+  scroll-margin-top: 80px; /* offset for sticky nav */
+  border-bottom: 1px solid #f0f0f0;
+  padding: 40px 0;
+}

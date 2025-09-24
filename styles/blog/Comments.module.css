@@ -1,0 +1,41 @@
+.commentsSection {
+  max-width: 800px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin: 30px auto;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.commentForm input,
+.commentForm textarea {
+  padding: 12px;
+  border: 1px solid #ece7e7;
+  border-radius: 8px !important;
+  background: #f6f6f6;
+  font-size: 1rem;
+  outline: none;
+}
+
+.commentForm button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.commentsSection h3{
+  margin-top: 0;
+}
+.commentForm button:hover {
+  background: #0056b3;
+}

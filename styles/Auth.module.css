@@ -1,0 +1,368 @@
+.authSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh; */
+  background: #f2f2f2;
+}
+.formClass{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.authBox {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  /* box-shadow: 0 0 15px rgba(0,0,0,0.1); */
+}
+
+.formContainer h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.description {
+  margin-bottom: 20px;
+  color: #6c757d;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+.countryOption{
+  background: none !important;
+  color: #333 !important;
+  padding: 3px !important;
+}
+/* Form styling is now handled by fieldInput classes */
+
+.formClass button {
+  width: 100%;
+  padding: 12px;
+  background: #0070f3;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* margin-top: 10px; */
+}
+
+.formClass button:hover:not(:disabled) {
+  background: #005bb5;
+}
+.formContainer p{
+  text-align: center;
+}
+.formClass button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+/* 
+.fieldContainer {
+  margin-bottom: 15px;
+} */
+
+.fieldLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.fieldInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.fieldInput:focus {
+  border-color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.1);
+}
+
+.fieldInputError {
+  border-color: #dc3545;
+}
+
+.fieldInputError:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+.fieldError {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+.required {
+  color: #dc3545;
+}
+
+/* Keep the old error class for backward compatibility */
+.error {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Icon Input Styles */
+/* .iconInputContainer {
+  margin-bottom: 15px;
+} */
+
+.iconFieldLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.iconInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 12px;
+  z-index: 2;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.iconInput {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background: #f2f2f2;
+  border-radius: 7px !important;
+}
+
+.iconInput:focus {
+  border-color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.1);
+}
+
+.iconInput:focus + .iconWrapper,
+.iconInput:focus ~ .iconWrapper {
+  color: #0070f3;
+}
+
+.iconInputError {
+  border-color: #dc3545;
+}
+
+.iconInputError:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+.iconFieldError {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Phone Input Styles */
+
+.phoneInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.countryDropdown {
+  position: relative;
+  z-index: 3;
+}
+
+.countryButton {
+  display: flex;
+  align-items: center;
+  padding: .66rem 8px !important;
+  background: #f2f2f2 !important;
+  border: 1px solid #ccc !important;
+  border-right: none;
+  border-radius: 7px 0 0 7px !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px !important;
+  color: #333 !important;
+  margin-top: 0 !important;
+}
+
+.countryButton:hover {
+  background: #e9ecef;
+}
+
+.countryFlag {
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.countryCode {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-right: 4px;
+}
+
+.dropdownArrow {
+  font-size: 10px;
+  color: #6c757d;
+  transition: transform 0.3s ease;
+}
+
+.countryButton:hover .dropdownArrow {
+  transform: rotate(180deg);
+}
+
+.countryList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0 0 7px 7px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.countryOption {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.countryOption:hover {
+  background: #f8f9fa;
+}
+
+.countryOption.selected {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.countryName {
+  font-size: 12px;
+  color: #6c757d;
+  margin-left: auto;
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 12px 12px 12px 17px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 7px 7px 0 !important;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background: #f2f2f2;
+}
+
+.phoneInput:focus {
+  border-color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.1);
+}
+
+.phoneInput:focus + .iconWrapper,
+.phoneInput:focus ~ .iconWrapper {
+  color: #0070f3;
+}
+
+.formToggle {
+  display: flex;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: #f8f9fa;
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-right: 1px solid #dee2e6;
+}
+
+.toggleBtn:last-child {
+  border-right: none;
+}
+
+.toggleBtn.active {
+  background: #0070f3;
+  color: white;
+}
+
+.toggleBtn:hover:not(.active) {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.switchText {
+  margin-top: 20px;
+  text-align: center;
+  color: #6c757d;
+}
+
+.forgotLink {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.toggleLink {
+  color: #0070f3;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.toggleLink:hover {
+  text-decoration: underline;
+}
+
+.formClass p {
+  margin-top: 10px;
+}

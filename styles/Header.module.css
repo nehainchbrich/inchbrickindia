@@ -1,0 +1,402 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  height: 64px;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a73e8;
+  letter-spacing: 2px;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  position: relative;
+}
+.navbar a:hover {
+  border-bottom: 1px solid #e63946;
+  color: #fff;
+  border-radius: 0;
+}
+
+/* Dropdown */
+.dropdownTrigger {
+  cursor: pointer;
+  text-align: left;
+  color: #090707;
+  padding: 18px 32px;
+  margin: 0;
+  font-size: 1.1rem;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-family: unset;
+  border-bottom: 1px solid #f0f0f0;
+}
+.dropdownArrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+.dropdownTrigger:hover .dropdownArrow {
+  transform: rotate(180deg);
+}
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  min-width: 800px;
+  max-width: 900px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  margin-top: 10px;
+  border: 1px solid #eee;
+}
+.dropdownTrigger:hover + .dropdownMenu,
+.dropdownMenu:hover {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+}
+.dropdownContent {
+  display: flex;
+  min-height: 400px;
+}
+.dropdownLinks {
+  flex: 1;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.dropdownSection h4 {
+  font-size: 1.1rem;       /* slightly bigger than links */
+  font-weight: 700;        /* bold */
+  color: #090707;          /* dark color for visibility on desktop white bg or mobile */
+  margin-bottom: 10px;
+  border-bottom: 2px solid #f19b04; /* accent underline */
+  padding-bottom: 5px;
+}
+.dropdownSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdownSection ul li {
+  margin-bottom: 8px;
+}
+.dropdownSection ul li a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 5px 0;
+}
+.dropdownSection ul li a:hover {
+  color: var(--orange-color);
+  transform: translateX(5px);
+}
+.dropdownImage {
+  flex: 0 0 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 12px 12px 0;
+}
+.dropdownImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.dropdownMenu:hover .dropdownImage img {
+  transform: scale(1.05);
+}
+.dropdownImageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+.dropdownImageOverlay h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+.dropdownImageOverlay p {
+  font-size: 0.9rem;
+  margin: 0 0 10px 0;
+  opacity: 0.9;
+}
+.dropdownImageOverlay .price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--orange-color);
+}
+
+/* Actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.loginBtn,
+.registerBtn {
+  background: #fff;
+  color: var(--orange-color);
+  border: 0;
+  padding: 7px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.loginBtn:hover,
+.registerBtn:hover {
+  background: #f19b04;
+  color: #fff;
+}
+.loginBtn:hover a,
+.registerBtn:hover a {
+  color:#fff;
+}
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Mobile */
+.mobileOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 99;
+  transition: opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+.mobileOverlay.active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+.closeNavBtn {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: #1a73e8;
+  cursor: pointer;
+  z-index: 201;
+}
+.navigation{
+  background: #090707;
+}
+.logo img{
+    width: 100%;
+    height: revert-layer;
+}
+@media (max-width: 900px) {
+  .closeNavBtn {
+    display: block;
+  }
+  .navbar {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -260px;
+    height: 100vh;
+    width: 300px;
+    background: #fff;
+    box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+    padding: 80px 10px 0 12px;
+    gap: 0;
+    z-index: 200;
+    transition: right 0.35s cubic-bezier(.7,0,.3,1);
+  }
+  .navbar.active {
+    right: 0;
+  }
+  .navbar a {
+    width: 100%;
+    text-align: left;
+    color: #090707;
+    padding: 18px 32px;
+    margin: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .navbar a:hover{
+    color: #090707;
+  }
+  .menuToggle {
+    display: block;
+  }
+  .dropdownMenu {
+    position: static;
+    transform: none;
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    display: none; /* hidden by default */
+    margin-top: 0;
+    padding-left: 10px;
+  }
+
+  .dropdownMenu.showMobile {
+    display: block; /* show when state true */
+  }
+
+  .dropdownContent {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .dropdownLinks {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .dropdownImage {
+    display: none; /* hide image on mobile */
+  }
+  .dropdownSection h4 {
+    font-size: 1rem;         /* slightly smaller on mobile */
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+  }
+
+  .dropdownSection ul li a {
+    padding-left: 10px;      /* indent links for clarity */
+  }
+}
+/* Mobile dropdown override */
+@media (max-width: 900px) {
+  /* Overlay with blur effect */
+  .mobileOverlay {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+  }
+  .mobileOverlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Slide-in drawer with rounded edge */
+  .navbar {
+    right: -320px;
+    width: 280px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    background: #fff;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .navbar.active {
+    right: 0;
+  }
+
+  /* Animated menu items */
+  .navbar a {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .navbar.active a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .navbar.active a:nth-child(1) { transition-delay: 0.1s; }
+  .navbar.active a:nth-child(2) { transition-delay: 0.2s; }
+  .navbar.active a:nth-child(3) { transition-delay: 0.3s; }
+  .navbar.active a:nth-child(4) { transition-delay: 0.4s; }
+  .navbar.active a:nth-child(5) { transition-delay: 0.5s; }
+
+  /* Links styling */
+  .navbar a {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #222;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 4px 0;
+  }
+  .navbar a:hover {
+    background: #f8f9fa;
+    color: var(--orange-color);
+  }
+
+  /* Active link highlight */
+  .navbar a.active {
+    background: var(--orange-color);
+    color: #fff;
+  }
+
+  /* Sticky bottom actions */
+  .mobileActions {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 12px;
+  }
+  .mobileActions a {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+  .mobileActions a.login {
+    background: #f19b04;
+    color: #fff;
+  }
+  .mobileActions a.register {
+    border: 2px solid #f19b04;
+    color: #f19b04;
+  }
+  .mobileActions a.register:hover {
+    background: #f19b04;
+    color: #fff;
+  }
+}
+
+

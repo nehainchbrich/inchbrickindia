@@ -1,0 +1,97 @@
+.contactSection {
+  margin: 20px 0;
+}
+
+.contactLeft {
+  flex: 1 1 55%;
+}
+
+.contactRight {
+  flex: 1 1 45%;
+  max-width: 520px;
+}
+.contactInfoGrid h4{
+  margin: 0;
+}
+.contactInfoGrid p{
+  margin-top: .2rem;
+}
+.contactCard {
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.contactInfoGrid {
+  margin-top: 10px;
+  display: grid;
+  gap: 12px;
+}
+
+.icon {
+  color: #e63f3f;
+  vertical-align: middle;
+}
+
+.mapWrap {
+  margin-top: 16px;
+}
+
+.mapFrame {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eef2f7;
+}
+
+.contactFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.contactFormGrid input,
+.contactFormGrid textarea {
+  padding: 10px;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  font-family: "CenturyGothicPaneuropeanLight", sans-serif;
+}
+
+.contactFormGrid textarea {
+  grid-column: 1 / -1;
+}
+
+.contactFormGrid input[type="email"],
+.contactFormGrid input[placeholder="Phone"],
+.contactFormGrid button {
+  grid-column: 1 / -1;
+}
+.dFlex{
+    display: flex;
+}
+.btnApply {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px;
+    background: rgb(230, 57, 70);
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+.gap20 {
+    gap: 20px;
+}
+@media (max-width: 768px) {
+  .contactRight {
+    max-width: none;
+  }
+  .contactFormGrid {
+    grid-template-columns: 1fr;
+  }
+}

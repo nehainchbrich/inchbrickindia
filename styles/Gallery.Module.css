@@ -1,0 +1,109 @@
+.galleryWrapper {
+  padding: 2rem 0;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #222;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.image {
+  position: relative;
+  width: 23.2%;
+  height: 267px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.image img {
+  transition: transform 0.25s;
+}
+.image:hover img {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.lightboxInner {
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: transparent;
+  border: none;
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;       /* no wrap */
+    overflow-x: auto;        /* horizontal scroll */
+    gap: 1rem;
+    padding-bottom: 1rem;    /* spacing */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    scroll-snap-type: x mandatory;     /* optional: snap effect */
+  }
+
+  .image {
+    flex: 0 0 auto;          /* prevent shrinking */
+    width: 250px;            /* fixed width for scroll */
+    height: 180px;
+    scroll-snap-align: start; /* optional snap */
+  }
+
+  /* Optional: hide scrollbar */
+  .wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .wrapper {
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+}

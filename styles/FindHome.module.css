@@ -1,0 +1,188 @@
+.findHome {
+  z-index: 999;
+  position: relative;
+}
+
+.findHome button {
+  background: linear-gradient(to right, #3a3a39, #010101);;
+}
+.exploreProperty img {
+    width: 73px;
+    height: fit-content;
+    margin-right: .5rem;
+}
+/* button,
+select,
+input {
+  border-radius: 0 !important;
+} */
+
+/* Flex helpers */
+.dFlex {
+  display: flex;
+}
+.alignItemsCenter {
+  align-items: center;
+}
+.justifySpaceBetween {
+  justify-content: space-between;
+}
+
+/* Form */
+.findHomeForm {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputGroup input[type="text"] {
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  min-width: 220px;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+  transition: border 0.2s;
+}
+
+.inputGroup input[type="text"]:focus {
+  border-color: #ff8400;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  color: #ff8400;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Select */
+.findHomeForm select {
+  padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  color: #333;
+  min-width: 140px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.findHomeForm select:focus {
+  border-color: #ff8400;
+}
+
+/* Browse button */
+.browseBtn {
+  background: #ff8400;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: .9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 2px 4px 8px rgb(255 132 0 / 18%);
+  transition: background 0.2s;
+}
+
+.browseBtn:hover {
+  background: #e67300;
+}
+
+/* Select group */
+.selectGroup {
+  display: flex;
+  align-items: stretch;
+  border-radius: 0 !important;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+  overflow: hidden;
+  background: #fff;
+  min-width: 264px;
+}
+
+.selectLabel {
+  background: #f5f5f5;
+  color: #333;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.selectGroup select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+  min-width: 100px;
+  color: #333;
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+.selectGroup select:focus {
+  background: #f9f9f9;
+}
+
+/* Explore property */
+.exploreProperty {
+ border-top-left-radius: 58px;
+  border-bottom-left-radius: 58px;
+  background: #fff;
+  display: flex;
+  color: #000;
+  padding: 1rem 3rem;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: -1px 2px 11px 0px #888888db;
+  margin-right: -3.9rem;
+  margin-top: 1rem;
+  letter-spacing: .3em;
+  min-width: 349px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .findHomeForm {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .inputGroup input[type="text"],
+  .findHomeForm select,
+  .browseBtn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .selectGroup {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .selectGroup select {
+    width: 100%;
+  }
+  .findHome .dFlex{
+    display: block;
+  }
+  .exploreProperty{
+    margin-right: 0;
+    min-width: auto;
+  }
+}

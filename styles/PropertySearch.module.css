@@ -1,0 +1,83 @@
+.propertySearch {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animateIn {
+  animation: bounceIn 1s ease-out;
+  padding-top: 1.8rem;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.propertySell div h4{
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+.propertySell div button{
+  border: 1px solid var(--orange-color);
+  padding: .6rem 2rem;
+  background: #fff;
+  font-family: 'SansSerifFLF-Demibold';
+  color: var(--orange-color);
+  font-size: 1.2rem;
+}
+.propertySell div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.propertySell {
+    background: url(../public/images/property-sell.png) no-repeat center center;
+ background-size: cover;
+    position: relative;
+    background-position: center;
+    border-radius: 16px;
+    padding: 4.5rem 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+    min-width: 0;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.propertySell h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.sellBtn {
+  background: #ff8400;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sellBtn:hover {
+  background: #e67300;
+}
+@media (max-width: 600px) {
+.propertySell div h4{
+  font-size: 1.5rem;
+}
+}

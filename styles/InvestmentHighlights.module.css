@@ -1,0 +1,86 @@
+.investmentHighlightsSection {
+  background-position: center;
+  background-size: cover;
+  padding: 3rem 0;
+}
+
+.investmentHighlightsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.investmentHighlightsGrid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.investmentHighlight {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+    padding: 1.5rem 1.2rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.investmentHighlight:hover {
+  transform: translateY(-5px);
+}
+
+.highlightIcon {
+width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: var(--orange-color);
+    border: 1px solid var(--orange-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.10);
+}
+
+.highlightText {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlightValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.highlightLabel {
+  font-size: 1.05rem;
+  font-family: "CenturyGothicPaneuropeanLight", sans-serif;
+  margin-top: 0.2rem;
+  color: #555;
+}
+
+/* ✅ Responsive */
+@media (max-width: 900px) {
+  .investmentHighlightsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .investmentHighlightsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .investmentHighlight {
+    padding: 1.1rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  .investmentHighlightsSection {
+    padding: 2rem 0 1.2rem 0;
+  }
+}

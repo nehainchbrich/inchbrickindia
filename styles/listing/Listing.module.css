@@ -1,0 +1,7 @@
+.propertyLayout{
+    display: grid;
+        grid-template-columns: 72% 26%;
+    gap: 24px;
+    margin-top: 20px;
+    align-items: start;
+}

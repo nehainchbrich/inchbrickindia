@@ -1,0 +1,232 @@
+.headBanner {
+  background: url('/images/blog-banner.jpg') #000000b0;
+  background-position: bottom;
+  background-blend-mode: overlay;
+}
+
+.p2 {
+  padding: 2rem;
+}
+.myBody{
+    margin: 0;
+}
+.hero {
+  width: 100%;
+  padding: 2rem 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  gap: 40px;
+}
+
+.heroContent {
+  flex: 1 1 0;
+  padding: 2rem 0;
+}
+
+.heroContent h1 {
+  font-size: 3.8rem;
+  margin-bottom: 2px;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+.heroImage {
+  position: absolute;
+  min-width: 260px;
+  right: 0;
+  top: 0;
+  min-height: 220px;
+}
+
+.dreamHome {
+  display: block;
+}
+
+.heroContent h3 {
+  font-size: 2rem;
+  margin-top: 0;
+  font-weight: 100;
+  color: #ff8400;
+}
+
+.btn {
+  background: #ff8400;
+  color: #fff;
+  height: fit-content;
+  margin-left: 1rem;
+  padding: 12px 32px;
+  border: none;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+  box-shadow: 3px 4px 3px rgb(255 132 0 / 51%);
+}
+
+.heroImage img {
+  right: 0;
+  top: -17px;
+  width: 625px;
+  object-fit: cover;
+  height: auto;
+  position: absolute;
+}
+.heroImage {
+  /* default vars */
+  --parallax: 0px;   /* set by JS */
+  --dir-offset: 0px; /* changed by .scrollDown / .scrollUp */
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+  transform: translateY(calc(var(--parallax) + var(--dir-offset)));
+  /* any other layout styles you used before: */
+  display: block;
+}
+
+/* slight move up when user scrolls down */
+.scrollDown {
+  --dir-offset: -22px;
+}
+
+/* slight move down when user scrolls up */
+.scrollUp {
+  --dir-offset: 58px;
+}
+
+/* small improvement: reduce transition while user is actively scrolling */
+.heroImage:active,
+.heroImage:focus {
+  transition: none;
+}
+.heroImage {
+  transform: translateY(var(--parallax, 0px));
+  transition: transform 0.3s ease-out;
+}
+
+/* ✅ animation for page reload */
+.initialAnim {
+  animation: fadeDown 1s ease-out forwards;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ scroll classes */
+.scrollDown {
+  transition: transform 0.3s ease-out;
+}
+.scrollUp {
+  transition: transform 0.3s ease-out;
+}
+
+@media (max-width: 900px) {
+  .heroInner {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 10px;
+  }
+  .heroContent {
+    flex: unset;
+    width: 100%;
+  }
+  .heroImage{
+    display: none;
+  }
+
+}
+
+.ctaBtn {
+  background: #070707;
+  color: #fff;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.08);
+}
+
+.ctaBtn:hover {
+  background: #070707;
+}
+.heroContent h1{
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .hero {
+    height: 260px;
+    padding: 0 10px;
+  }
+
+  .heroContent h1 {
+    font-size: 1.5rem;
+  }
+  .btn{
+margin-left: 0;
+  }
+  .heroContent{
+    padding: 0;
+  }
+
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}

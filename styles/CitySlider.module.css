@@ -1,0 +1,146 @@
+.testimonials {
+  position: relative;
+  padding: 3rem 0;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.sliderWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sliderTrack {
+  display: flex;
+  will-change: transform;
+}
+
+.citySliderPage {
+  flex-shrink: 0; /* width controlled inline in px */
+}
+
+.cityGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.popularCityCard {
+    flex: 0 0 calc(25% - 2rem);
+    max-width: calc(100% - 1rem);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 0;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.popularCityCard:hover {
+  transform: translateY(-5px);
+}
+
+.cityImg {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: .5rem;
+    box-shadow: 0 2px 8px rgba(255, 132, 0, 0.10);
+}
+
+.cityInfo {
+  padding: 0.8rem;
+}
+
+.cityName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.cityCount {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.sliderBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .cityGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .cityGrid {
+    display: flex;           /* horizontal scroll instead of grid */
+    flex-wrap: nowrap;       /* no wrapping */
+    gap: 1rem;
+    overflow-x: auto;        /* allow scroll */
+    -webkit-overflow-scrolling: touch; /* smooth swipe on iOS */
+    padding: 10px;
+    scroll-snap-type: x mandatory;     /* optional snap effect */
+  }
+
+  .popularCityCard {
+    flex: 0 0 auto;          /* prevent shrinking */
+    width: 180px;            /* fixed width for scroll */
+    scroll-snap-align: start;
+    margin-bottom: 0;        /* remove bottom margin for horizontal layout */
+  }
+
+  /* Optional: hide scrollbar for cleaner UI */
+  .cityGrid::-webkit-scrollbar {
+    display: none;
+  }
+  .cityGrid {
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  .cityImg {
+    width: 100%;
+    height: 120px;
+    border-radius: 0.5rem;
+  }
+
+  .cityInfo {
+    padding: 0.5rem 0;
+  }
+
+  .sliderBtn {
+    display: none; /* hide desktop prev/next buttons on mobile */
+  }
+}
