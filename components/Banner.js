@@ -64,7 +64,7 @@ export default function Hero() {
     <div className={styles.headBanner}>
       <div className="mobile-overlay" id="mobileOverlay"></div>
       <section ref={wrapperRef} className={styles.hero} id="home">
-        <div className={styles.container}>
+        <div className="container">
           <div className={styles.heroInner}>
             <div className={styles.heroContent}>
               <div className={styles.dFlex} style={{ alignItems: "center", gap: "20px" }}>
