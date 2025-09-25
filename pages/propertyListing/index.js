@@ -3,8 +3,10 @@ import Image from "next/image";
 import styles from "../../styles/PropertyListing.module.css";
 import Link from "next/link";
 import { MapPin, User, Building } from 'lucide-react';
+import { useState } from "react";
 
 export default function PropertyListing() {
+  const [open, setOpen] = useState(false);
   const properties = [
     {
       id: 1,
@@ -48,9 +50,28 @@ export default function PropertyListing() {
   ];
   return (
     <div className="container">
+       {/* Mobile Filter Button */}
+       <button
+        className={styles.filterBtn}
+        onClick={() => setOpen(true)}
+      >
+        ☰ Filters
+      </button>
+
+      {/* Overlay (click to close) */}
+      {open && <div className={styles.overlay} onClick={() => setOpen(false)}></div>}
       <div className={styles.layout}>
         {/* Right: Sidebar + Featured */}
         <aside className={styles.featuredBox}>
+          <div className={`${styles.mobileSide} ${open ? styles.open : ""}`}>
+          <div className={styles.closeWrap}>
+          <button
+            className={styles.closeBtn}
+            onClick={() => setOpen(false)}
+          >
+            ✕
+          </button>
+        </div>
           <h3>Filter Properties</h3>
           {/* Filter - Property Type */}
           <div className={styles.filterGroup}>
@@ -108,6 +129,7 @@ export default function PropertyListing() {
           </div>
 
           <button className={styles.btnApply}>Apply Filters</button>
+          </div>
 
           {/* Featured Listings */}
           <h2 className={styles.featuredTitle}>Featured Listings</h2>

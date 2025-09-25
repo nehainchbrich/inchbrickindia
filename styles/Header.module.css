@@ -4,7 +4,7 @@
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 99999;
+  z-index: 9999;
   overflow: hidden;
   height: 64px;
 }
