@@ -183,6 +183,7 @@ input {
   }
   .findHome .dFlex{
     display: block;
+    margin-top: 1rem;
   }
   .exploreProperty{
     margin-right: 0;
