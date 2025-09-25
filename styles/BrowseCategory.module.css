@@ -75,7 +75,6 @@
 .browseCategoryImgWrap:hover img {
   transform: scale(1.08);
 }
-
 /* Mobile horizontal scroll */
 .mobileScrollRow {
   display: none;
@@ -122,6 +121,6 @@
   }
 
   .mobileScrollRow .browseCategoryImgWrap img {
-    height: 120px;
+    height: 235px;
   }
 }

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Home, List, Menu } from "lucide-react"; // import icons
 import styles from "../styles/Header.module.css";
 
 export default function Header() {
@@ -15,6 +16,7 @@ export default function Header() {
   };
 
   return (
+    <>
     <div className={styles.navigation}>
       <div className="container">
         <header className={styles.header}>
@@ -206,13 +208,7 @@ export default function Header() {
             <button className={styles.loginBtn}>
               <Link href="/auth">Login</Link>
             </button>
-            <button
-              className={styles.menuToggle}
-              onClick={toggleNav}
-              aria-label="Open navigation"
-            >
-              &#9776;
-            </button>
+           
           </div>
         </header>
       </div>
@@ -223,5 +219,23 @@ export default function Header() {
         onClick={closeNav}
       ></div>
     </div>
+    <div className={styles.footerNav}>
+    <span>
+        <Home size={18} /> Home
+      </span>
+      <span>
+        <List size={18} /> Listing
+      </span>
+      <span>
+         <button
+              className={styles.menuToggle}
+              onClick={toggleNav}
+              aria-label="Open navigation"
+            > <Menu size={18} />
+              Menu
+            </button>
+      </span>
+    </div>
+    </>
   );
 }

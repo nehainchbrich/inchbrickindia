@@ -91,7 +91,7 @@ export default function Hero() {
                   : styles.scrollUp
               }`}
             >
-              <Image
+              <Image className="fullWidth"
                 src="/images/view-3d-house.png"
                 alt="Dream Home"
                 width={500}
