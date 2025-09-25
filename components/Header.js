@@ -228,7 +228,7 @@ export default function Header() {
       </span>
       <span>
          <button
-              className={styles.menuToggle}
+              className={`${styles.menuToggle} ${styles.dFlexnav}`}
               onClick={toggleNav}
               aria-label="Open navigation"
             > <Menu size={18} />
