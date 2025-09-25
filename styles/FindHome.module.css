@@ -164,12 +164,15 @@ input {
   }
 
   .inputGroup input[type="text"],
-  .findHomeForm select,
-  .browseBtn {
+  .findHomeForm select {
     width: 100%;
     min-width: 0;
   }
-
+.browseBtn{
+  padding: .9rem 1rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
   .selectGroup {
     width: 100%;
     min-width: 0;
@@ -184,5 +187,10 @@ input {
   .exploreProperty{
     margin-right: 0;
     min-width: auto;
+    border-radius: 58px;
+    margin-bottom: 1rem;
+  }
+  .dFlexMobile{
+    display: flex;
   }
 }

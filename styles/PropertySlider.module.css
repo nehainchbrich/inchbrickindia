@@ -174,3 +174,8 @@
 .autoSlider:hover .autoSliderTrack {
   animation-play-state: paused !important;
 }
+@media (max-width: 700px) {
+  .autoSliderSection{
+    padding: 0rem 0 2rem 0;
+  }
+}

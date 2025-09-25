@@ -414,5 +414,15 @@
     width: 100%;
     z-index: 999;
   }
- 
+ .footerNav span{
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+ }
+ .dFlexnav{
+  display: flex;
+  align-items: center;
+  font-family: 'centuryGothic', 'centuryGothic Fallback';
+  font-weight: 600;
+ }
 }

@@ -55,7 +55,7 @@ export default function FindHome() {
                   onChange={handleChange}
                 />
               </div>
-
+              <div className={styles.dFlexMobile}>
               {/* Select Dropdown */}
               <div className={styles.selectGroup}>
                 <span className={styles.selectLabel}>Type</span>
@@ -70,11 +70,12 @@ export default function FindHome() {
                   <option value="plot">Plot</option>
                 </select>
               </div>
-
+           
               {/* Submit Button */}
               <button type="submit" className={styles.browseBtn}>
                 Browse
               </button>
+              </div>
             </form>
           </div>
 
