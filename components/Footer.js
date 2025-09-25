@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from '../styles/Footer.module.css'
 
+
 export default function Footer() {
   return (
     <>
@@ -120,12 +121,13 @@ export default function Footer() {
             </div>
 
             <div className={styles.footerCopyright}>
-              Copyright | All Rights Reserved. Inch &amp; Brick Realty
+              {`Copyright | All Rights Reserved. Inch &amp; Brick Realty`}
             </div>
           </div>
         </div>
       </div>
     </footer>
+ 
     </>
   );
 }

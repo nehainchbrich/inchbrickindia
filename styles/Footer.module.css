@@ -127,6 +127,9 @@
   .footerMain {
     padding: 1.2rem 0 0.7rem 0;
   }
+  .footerSection{
+    margin-bottom: 2.5rem;
+  }
   .footerRow {
     grid-template-columns:  repeat(2, 1fr);
     gap: 1rem;
@@ -134,7 +137,7 @@
   }
   .footerBottomRow {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.7rem;
   }
   .footerLogoSliderWrap {
@@ -142,6 +145,10 @@
   }
   .footerBacklinks{
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footerCopyright{
+    text-align: center;
   }
 }
 .footer {
