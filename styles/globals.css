@@ -6,7 +6,7 @@
 body, html {
   margin: 0;
   color: #222;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   max-width: 100%;
 }
 img, .next-image img {
@@ -40,7 +40,7 @@ select, input, input::placeholder{
   margin-left: auto;
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 .navbar, .dropdownMenu {
   max-width: 100%;

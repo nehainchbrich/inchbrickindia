@@ -22,7 +22,7 @@
 }
 
 .slide {
-  flex: 0 0 calc(33.333% - 20px); /* 3 columns */
+  flex: 0 0 calc(33.333% - 20px); 
   margin-right: 20px;
   box-sizing: border-box;
 }
@@ -86,4 +86,10 @@
 
 .next {
   right: 10px;
+}
+
+@media (max-width: 600px) {
+.slide {
+  flex: 0 0 calc(80% - 20px); 
+}
 }
