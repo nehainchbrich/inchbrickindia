@@ -226,7 +226,7 @@ export default function Header() {
         </Link>
       </span>
       <span>
-      <Link href="/">
+      <Link href="/propertyListing/">
         <List size={18} /> Listing
         </Link>
       </span>
