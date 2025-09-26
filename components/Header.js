@@ -52,13 +52,13 @@ export default function Header() {
 
             {/* Property Dropdown */}
             <Link
-              href="#"
+              href="#" className={styles.dropdownTrigger}
               onClick={(e) => {
                 e.preventDefault(); // prevent page jump
                 setPropertyOpen(!propertyOpen);
               }}
             >
-              Property <span className="dropdown-arrow">▼</span>
+              Property <span className={styles.dropdownArrow}>▼</span>
             </Link>
 
             <div

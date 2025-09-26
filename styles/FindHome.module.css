@@ -27,7 +27,9 @@ input {
 .justifySpaceBetween {
   justify-content: space-between;
 }
-
+.findHome .justifySpaceBetween{
+  padding-bottom: 1rem;
+}
 /* Form */
 .findHomeForm {
   display: flex;
@@ -154,7 +156,9 @@ input {
   letter-spacing: .3em;
   min-width: 349px;
 }
-
+.dFlexMobile{
+  display: flex;
+}
 /* Responsive */
 @media (max-width: 600px) {
   .findHomeForm {
@@ -191,7 +195,5 @@ input {
     border-radius: 58px;
     margin-bottom: 1rem;
   }
-  .dFlexMobile{
-    display: flex;
-  }
+
 }
