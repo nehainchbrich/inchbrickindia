@@ -51,7 +51,7 @@ export default function About() {
         <div className={styles.right}>
        
           <div className={styles.card}>
-            <Image src="/images/goal.png" alt="Goal Icon" width={50} height={50} />
+       
             <h3>Our Mission</h3>
             <p> To redefine modern living by crafting spaces that are elegant, 
               sustainable, and timeless. We aspire to be recognized as the 
@@ -59,7 +59,7 @@ export default function About() {
               and integrity. </p>
           </div>
           <div className={styles.card}>
-            <Image src="/images/goal.png" alt="Goal Icon" width={50} height={50} />
+       
             <h3>Our Vision</h3>
             <p>To empower every client with real estate solutions that match 
               their lifestyle, aspirations, and investment goals. From 

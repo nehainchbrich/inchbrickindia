@@ -8,6 +8,9 @@
   overflow: hidden;
   height: 64px;
 }
+.footerNav span a{
+  color: #fff;
+}
 .navbar{
   overflow-y: auto;
 }
@@ -234,6 +237,9 @@
   .closeNavBtn {
     display: block;
   }
+  .navbar a:hover{
+    border-bottom: 0;
+  }
   .navbar {
     flex-direction: column;
     position: fixed;
@@ -250,6 +256,7 @@
   }
   .navbar.active {
     right: 0;
+    z-index: 99999;
   }
   .navbar a {
     width: 100%;
@@ -416,7 +423,7 @@
     width: 100%;
     z-index: 999;
   }
- .footerNav span{
+ .footerNav a{
   display: flex;
   align-items: center;
   font-weight: 800;
