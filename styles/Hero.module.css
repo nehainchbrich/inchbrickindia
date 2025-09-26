@@ -186,6 +186,7 @@
 
   .heroContent h1 {
     font-size: 1.9rem;
+    line-height: 52px;
     /* text-align: center; */
   }
   .heroContent h3 {

@@ -85,7 +85,7 @@
     display: flex;
     flex-wrap: nowrap;       /* no wrap */
     overflow-x: auto;        /* horizontal scroll */
-    gap: 1rem;
+    gap: 0;
     padding-bottom: 1rem;    /* spacing */
     -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
     scroll-snap-type: x mandatory;     /* optional: snap effect */
