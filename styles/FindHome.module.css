@@ -192,8 +192,12 @@ input {
   .exploreProperty{
     margin-right: 0;
     min-width: auto;
-    border-radius: 58px;
-    margin-bottom: 1rem;
+    border-radius: 21px;
+    /* margin-bottom: 1rem; */
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
   }
-
+.exploreProperty img{
+  width: 55px;
+}
 }
