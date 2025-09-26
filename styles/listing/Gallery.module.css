@@ -70,3 +70,13 @@
 .propertyThumbs img:hover {
   transform: scale(1.05);
 }
+
+@media (max-width: 600px) {
+  .propertyThumbs img{
+    max-width: 54px;
+  }
+  .propertyGalleryMain{
+    margin: 0 -15px;
+    border-radius: 0;
+  }
+}
