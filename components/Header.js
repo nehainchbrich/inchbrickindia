@@ -221,10 +221,14 @@ export default function Header() {
     </div>
     <div className={styles.footerNav}>
     <span>
+      <Link href="/">
         <Home size={18} /> Home
+        </Link>
       </span>
       <span>
+      <Link href="/">
         <List size={18} /> Listing
+        </Link>
       </span>
       <span>
          <button
